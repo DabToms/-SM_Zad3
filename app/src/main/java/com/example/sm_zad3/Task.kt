@@ -4,17 +4,13 @@ import java.util.Date
 import java.util.UUID
 
 class Task {
-    private var id: UUID
+    private var id: UUID = UUID.randomUUID()
     private var name: String? = null
-    private var date: Date
+    private var date: Date = Date()
     private var done: Boolean? = null
+    private var category: Category = Category.HOME
 
-    constructor(){
-        this.id = UUID.randomUUID()
-        this.date = Date()
-    }
-
-    fun isDone(): Boolean{
+    fun isDone(): Boolean {
         return done ?: false
     }
 
@@ -26,16 +22,32 @@ class Task {
         return date
     }
 
+    fun setDate(date: Date) {
+        this.date = date
+    }
+
     @JvmName("setName1")
     fun setName(name: String) {
         this.name = name
     }
 
-    fun getUUID(): UUID{
+    fun getUUID(): UUID {
         return id
     }
 
-    fun getName(): String?{
+    fun getName(): String? {
         return name
+    }
+
+    fun setCategory(cat: Category) {
+        this.category = cat
+    }
+
+    fun getCategory(): Category {
+        return this.category
+    }
+
+    fun getId(): UUID {
+        return this.id
     }
 }

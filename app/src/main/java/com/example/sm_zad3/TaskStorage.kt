@@ -3,8 +3,7 @@ package com.example.sm_zad3
 import android.util.Log
 import java.util.*
 
-class TaskStorage
-{
+class TaskStorage {
     companion object {
         private val taskStorage: TaskStorage = TaskStorage()
         fun getInstance(): TaskStorage {
@@ -19,6 +18,11 @@ class TaskStorage
             var task: Task = Task()
             task.setName("Pilne zadanie numer " + i)
             task.setDone(i % 3 == 0)
+            if (i % 3 == 0) {
+                task.setCategory(Category.STUDIES)
+            } else {
+                task.setCategory(Category.HOME)
+            }
             tasks.add(task)
         }
     }
@@ -37,5 +41,9 @@ class TaskStorage
         }
         return taskFound
 
+    }
+
+    fun addTask(task: Task) {
+        this.tasks.add(task)
     }
 }
